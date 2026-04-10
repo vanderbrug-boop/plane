@@ -101,7 +101,7 @@ export default function AISidebar({
     setLoading(true);
 
     try {
-      const res = await fetch(`/api/v1/workspaces/${workspaceId}/ai/query/`, {
+      const res = await fetch(`/api/ai/workspaces/${workspaceId}/ai/query/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question }),
@@ -152,7 +152,7 @@ export default function AISidebar({
     setMessages((prev) => [...prev, userMessage]);
 
     try {
-      const res = await fetch(`/api/v1/workspaces/${workspaceId}/ai/status-report/`, {
+      const res = await fetch(`/api/ai/workspaces/${workspaceId}/ai/status-report/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -179,8 +179,8 @@ export default function CRODashboard({ workspaceId }: { workspaceId: string }) {
     async function fetchData() {
       try {
         const [dashRes, delivRes] = await Promise.all([
-          fetch(`/api/v1/workspaces/${workspaceId}/clinical/cro-dashboard/`),
-          fetch(`/api/v1/workspaces/${workspaceId}/clinical/cro-deliverables/`),
+          fetch(`/api/clinical/workspaces/${workspaceId}/clinical/cro-dashboard/`),
+          fetch(`/api/clinical/workspaces/${workspaceId}/clinical/cro-deliverables/`),
         ]);
 
         if (dashRes.ok) setCros(await dashRes.json());
@@ -200,7 +200,7 @@ export default function CRODashboard({ workspaceId }: { workspaceId: string }) {
     setScorecardLoading(true);
     setAiScorecard(null);
     try {
-      const res = await fetch(`/api/v1/workspaces/${workspaceId}/ai/cro-scorecard/`, {
+      const res = await fetch(`/api/ai/workspaces/${workspaceId}/ai/cro-scorecard/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cro_id: croId }),

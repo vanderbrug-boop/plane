@@ -228,8 +228,8 @@ export default function TrialDashboard({
     async function fetchData() {
       try {
         const [trialsRes, submissionsRes] = await Promise.all([
-          fetch(`/api/v1/workspaces/${workspaceId}/clinical/trials/`),
-          fetch(`/api/v1/workspaces/${workspaceId}/clinical/submissions/`),
+          fetch(`/api/clinical/workspaces/${workspaceId}/clinical/trials/`),
+          fetch(`/api/clinical/workspaces/${workspaceId}/clinical/submissions/`),
         ]);
 
         if (trialsRes.ok) setTrials(await trialsRes.json());
@@ -239,7 +239,7 @@ export default function TrialDashboard({
         const trialsData = await trialsRes.json().catch(() => []);
         if (trialsData.length > 0) {
           const enrollRes = await fetch(
-            `/api/v1/workspaces/${workspaceId}/clinical/trials/${trialsData[0].id}/enrollment/`
+            `/api/clinical/workspaces/${workspaceId}/clinical/trials/${trialsData[0].id}/enrollment/`
           );
           if (enrollRes.ok) {
             const enrollment = await enrollRes.json();

@@ -133,14 +133,14 @@ export default function SubmissionTracker({ workspaceId }: { workspaceId: string
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch(`/api/v1/workspaces/${workspaceId}/clinical/submissions/`);
+        const res = await fetch(`/api/clinical/workspaces/${workspaceId}/clinical/submissions/`);
         if (res.ok) {
           const data = await res.json();
           // Fetch full details for each submission (with sections)
           const detailed = await Promise.all(
             (Array.isArray(data) ? data : data.results || []).map(async (sub: any) => {
               const detailRes = await fetch(
-                `/api/v1/workspaces/${workspaceId}/clinical/submissions/${sub.id}/`
+                `/api/clinical/workspaces/${workspaceId}/clinical/submissions/${sub.id}/`
               );
               return detailRes.ok ? detailRes.json() : sub;
             })
@@ -159,7 +159,7 @@ export default function SubmissionTracker({ workspaceId }: { workspaceId: string
     setAnalysisLoading(true);
     setAiAnalysis(null);
     try {
-      const res = await fetch(`/api/v1/workspaces/${workspaceId}/ai/regulatory-analysis/`, {
+      const res = await fetch(`/api/ai/workspaces/${workspaceId}/ai/regulatory-analysis/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
