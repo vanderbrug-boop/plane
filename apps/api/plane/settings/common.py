@@ -53,6 +53,10 @@ INSTALLED_APPS = [
     "plane.license",
     "plane.api",
     "plane.authentication",
+    # Clinical trial / AI apps
+    "plane.compliance",
+    "plane.clinical",
+    "plane.ai",
     # Third-party things
     "rest_framework",
     "corsheaders",
@@ -68,6 +72,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "plane.compliance.middleware.AuditMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "crum.CurrentRequestUserMiddleware",
     "django.middleware.gzip.GZipMiddleware",

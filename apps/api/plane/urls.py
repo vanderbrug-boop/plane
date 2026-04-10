@@ -19,6 +19,9 @@ urlpatterns = [
     path("api/public/", include("plane.space.urls")),
     path("api/instances/", include("plane.license.urls")),
     path("api/v1/", include("plane.api.urls")),
+    path("api/ai/", include("plane.ai.urls")),
+    path("api/clinical/", include("plane.clinical.urls")),
+    path("api/compliance/", include("plane.compliance.urls")),
     path("auth/", include("plane.authentication.urls")),
     path("", include("plane.web.urls")),
 ]
